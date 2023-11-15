@@ -15,5 +15,9 @@ html {
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: rgb(var(--background-end-rgb));
+  background: rgb(243 244 246);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
 }

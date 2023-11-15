@@ -1,63 +1,59 @@
-/* eslint-disable @next/next/no-img-element */
-"use client";
+'use client'
 
-import Image from "next/image";
-import { Navigation, Autoplay, EffectFade } from "swiper/modules";
+import {Navigation, Autoplay, EffectFade} from 'swiper/modules'
 
-import { Swiper, SwiperSlide } from "swiper/react";
+import {Swiper, SwiperSlide} from 'swiper/react'
 
 // Import Swiper styles
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/autoplay";
-import { slideData } from "../data/slideData";
-import { Locale } from "@/i18n/settings";
-import { useTranslation } from "@/i18n/client";
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/autoplay'
+import {slideData} from '../data/slideData'
+import {Locale} from '@/i18n/settings'
+import {useTranslation} from '@/i18n/client'
 
-export const Hero = ({ lang }: { lang: Locale }) => {
-  const { t } = useTranslation(lang);
+export const Hero = ({lang}: {lang: Locale}) => {
+  const {t} = useTranslation(lang)
 
   return (
     <Swiper
-      // install Swiper modules
       modules={[Navigation, EffectFade, Autoplay]}
       spaceBetween={50}
       slidesPerView={1}
       navigation={true}
-      autoplay={{ delay: 5000 }}
+      autoplay={{delay: 5000}}
       longSwipesMs={800}
       longSwipesRatio={1}
       loop
       id="home"
-      className="w-full max-h-[670px] min-h-[270px] flex items-center justify-center"
-    >
+      className="flex max-h-[670px] min-h-[270px] w-full items-center justify-center">
       {slideData.map((slide) => (
-        <SwiperSlide key={slide.id} className="relative">
-          {({ isActive }) => (
+        <SwiperSlide
+          key={slide.id}
+          className="relative">
+          {({isActive}) => (
             <>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={slide.src}
                 alt={slide.name}
-                className="object-cover object-center min-h-[270px] max-h-[670px] w-full"
+                className="h-[270px] w-full object-cover object-center sm:h-[370] md:h-[470px] lg:h-[670px]"
               />
-              <div className="absolute bg-black opacity-40 w-full h-full top-0 " />
+              <div className="absolute top-0 h-full w-full bg-black opacity-40 " />
               <div
                 className={`transition duration-1000 ${
-                  isActive ? "opacity-100 " : "opacity-0 "
-                } absolute flex items-center justify-center gap-3 flex-col w-full h-full top-0`}
-              >
+                  isActive ? 'opacity-100 ' : 'opacity-0 '
+                } absolute top-0 flex h-full w-full flex-col items-center justify-center gap-3`}>
                 <h2
-                  className={`transition duration-1000 text-white text-xl sm:text-xl  md:text-4xl ${
-                    isActive ? "translate-x-0" : "-translate-x-60"
-                  }`}
-                >
+                  className={`text-xl text-white transition duration-1000 sm:text-xl  md:text-4xl ${
+                    isActive ? 'translate-x-0' : '-translate-x-60'
+                  }`}>
                   {t(slide.title)}
                 </h2>
                 <p
-                  className={`transition duration-1000 text-white text-base sm:text-lg md:text-xl font-bold ${
-                    isActive ? "translate-x-0" : "translate-x-60"
-                  }`}
-                >
+                  className={`text-base font-bold text-white transition duration-1000 sm:text-lg md:text-xl ${
+                    isActive ? 'translate-x-0' : 'translate-x-60'
+                  }`}>
                   {t(slide.desc)}
                 </p>
               </div>
@@ -66,5 +62,5 @@ export const Hero = ({ lang }: { lang: Locale }) => {
         </SwiperSlide>
       ))}
     </Swiper>
-  );
-};
+  )
+}
