@@ -11,8 +11,12 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/autoplay";
 import { slideData } from "../data/slideData";
+import { Locale } from "@/i18n/settings";
+import { useTranslation } from "@/i18n/client";
 
-export const Hero = () => {
+export const Hero = ({ lang }: { lang: Locale }) => {
+  const { t } = useTranslation(lang);
+
   return (
     <Swiper
       // install Swiper modules
@@ -24,6 +28,7 @@ export const Hero = () => {
       longSwipesMs={800}
       longSwipesRatio={1}
       loop
+      id="home"
       className="w-full max-h-[670px] min-h-[270px] flex items-center justify-center"
     >
       {slideData.map((slide) => (
@@ -42,18 +47,18 @@ export const Hero = () => {
                 } absolute flex items-center justify-center gap-3 flex-col w-full h-full top-0`}
               >
                 <h2
-                  className={`transition duration-1000 text-white text-lg sm:text-xl  md:text-3xl ${
+                  className={`transition duration-1000 text-white text-xl sm:text-xl  md:text-4xl ${
                     isActive ? "translate-x-0" : "-translate-x-60"
                   }`}
                 >
-                  {slide.title}
+                  {t(slide.title)}
                 </h2>
                 <p
-                  className={`transition duration-1000 text-white text-sm sm:text-base md:text-lg font-bold ${
+                  className={`transition duration-1000 text-white text-base sm:text-lg md:text-xl font-bold ${
                     isActive ? "translate-x-0" : "translate-x-60"
                   }`}
                 >
-                  {slide.title}
+                  {t(slide.desc)}
                 </p>
               </div>
             </>
