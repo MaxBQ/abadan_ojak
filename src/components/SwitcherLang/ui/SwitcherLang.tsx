@@ -42,14 +42,12 @@ export const SwitcherLang = ({lng}: {lng: Locale}) => {
                       }`
                     }
                     value={languages}>
-                    {({selected}) => (
-                      <Image
-                        src={`/${languages}.svg`}
-                        alt={'test'}
-                        width={24}
-                        height={24}
-                      />
-                    )}
+                    <Image
+                      src={`/${languages}.svg`}
+                      alt={'test'}
+                      width={24}
+                      height={24}
+                    />
                   </Listbox.Option>
                 </Link>
               ))}
